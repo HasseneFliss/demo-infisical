@@ -11,7 +11,7 @@
     replicas: 1
     selector:
       matchLabels:
-        app: maypp
+        app: myapp
     template:
       metadata:
         labels:
