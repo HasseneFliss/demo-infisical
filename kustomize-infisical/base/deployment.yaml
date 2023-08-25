@@ -1,0 +1,27 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: myapp
+    namespace: infisical-demo
+    labels:
+      app: myapp
+    annotations: 
+      secrets.infisical.com/auto-reload: "true"
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: maypp
+    template:
+      metadata:
+        labels:
+          app: myapp
+      spec:
+        containers:
+        - name: myapp
+          image:  < ADD YOUR IMAGE HERE >
+          envFrom:
+          - secretRef:
+              name: infisical-ui-managed-secret
+          ports:
+          - containerPort: 80

@@ -1,0 +1,20 @@
+  apiVersion: secrets.infisical.com/v1alpha1
+  kind: InfisicalSecret
+  metadata:
+    name: infisical-demo
+    namespace: infisical-demo
+  spec:
+    hostAPI: http://infisical-backend.infisical.svc.cluster.local:4000/api
+    resyncInterval: 10
+    authentication:
+      serviceToken:
+        serviceTokenSecretReference:
+          secretName: infisical-secret
+          secretNamespace: infisical-demo
+        secretsScope:
+          envSlug: dev
+          secretsPath: "/"
+    managedSecretReference:
+      secretName: infisical-ui-managed-secret
+      secretNamespace: infisical-demo
+
